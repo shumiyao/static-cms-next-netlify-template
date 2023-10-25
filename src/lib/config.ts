@@ -1,4 +1,4 @@
-import config from "../../content/config.json";
+import { config } from 'contentlayer/generated'
 
 export interface Config {
   readonly base_url: string;

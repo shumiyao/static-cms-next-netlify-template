@@ -52,6 +52,11 @@ const Navigation: FC = () => {
               blog
             </Link>
           </li>
+          <li className="mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0">
+            <Link className={classNames(pathname.startsWith("/i18n-posts") && "text-gray-900 font-bold")} href="/i18n-posts">
+              i18n blog
+            </Link>
+          </li>
         </ul>
       </div>
     </>

@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
+
+const { withContentlayer } = require('next-contentlayer');
+
 const nextConfig = {
   webpack: (config) => {
     config.module.rules.push(
       ...[
-        {
-          test: /\.ya?ml$/,
-          use: "js-yaml-loader",
-        },
         {
           test: /\.svg$/,
           use: "@svgr/webpack",
@@ -17,4 +16,5 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withContentlayer(nextConfig);
+

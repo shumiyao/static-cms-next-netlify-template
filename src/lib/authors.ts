@@ -1,17 +1,19 @@
-import authors from "../../content/meta/authors.yml";
+import { author } from 'contentlayer/generated'
 
 export interface AuthorContent {
-  readonly slug: string;
-  readonly name: string;
-  readonly introduction: string;
+  readonly slug?: string;
+  readonly name?: string;
+  readonly introduction?: string;
 }
 
 const authorMap: { [key: string]: AuthorContent } = generateAuthorMap();
 
 function generateAuthorMap(): { [key: string]: AuthorContent } {
   let result: { [key: string]: AuthorContent } = {};
-  for (const author of authors.authors) {
-    result[author.slug] = author;
+  if (author.authors) {
+    author.authors.forEach(author => {
+      result[author.slug] = author;
+    });
   }
   return result;
 }

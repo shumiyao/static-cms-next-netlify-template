@@ -1,17 +1,20 @@
-import tags from "../../content/meta/tags.yml";
+import { tag } from 'contentlayer/generated'
 
 export interface TagContent {
-  readonly slug: string;
-  readonly name: string;
+  readonly slug?: string;
+  readonly name?: string;
 }
 
 const tagMap: { [key: string]: TagContent } = generateTagMap();
 
 function generateTagMap(): { [key: string]: TagContent } {
   let result: { [key: string]: TagContent } = {};
-  for (const tag of tags.tags) {
-    result[tag.slug] = tag;
+  if (tag.tags) {
+    tag.tags.forEach(tag => {
+      result[tag.slug] = tag;
+    });
   }
+
   return result;
 }
 
@@ -20,5 +23,5 @@ export function getTag(slug: string) {
 }
 
 export function listTags(): TagContent[] {
-  return tags.tags;
+  return tag.tags || [];
 }
