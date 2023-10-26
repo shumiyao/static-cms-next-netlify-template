@@ -96,28 +96,13 @@ const Tag = defineNestedType(() => ({
 }))
 
 
-const TagCollection = defineDocumentType(() => ({
-    name: 'TagCollection',
+const Tags = defineDocumentType(() => ({
+    name: 'Tags',
     filePathPattern: `meta/tags.yml`,
     isSingleton: true,
     fields: {
-        en: { type: 'nested', of: Tag, },
-        fr: { type: 'nested', of: Tag, },
-        ja: { type: 'nested', of: Tag, },
-    },
-    computedFields: {
-        fr: {
-            type: "nested",
-            resolve: (doc) => _.defaults(doc.fr, doc.en),
-        },
-        ja: {
-            type: "nested",
-            resolve: (doc) => _.defaults(doc.ja, doc.en),
-        },
-        slug: {
-            type: "string",
-            resolve: (doc) => doc.en && doc.en.slug ? doc.en.slug : doc.en ? slugify(doc.en.name) : ''
-            ,
+        tags: {
+            type: 'list', of: Tag
         },
     }
 }))
@@ -214,5 +199,5 @@ const I18nPostCollection = defineDocumentType(() => ({
 
 export default makeSource({
     contentDirPath: 'content',
-    documentTypes: [Config, Authors, TagCollection, Posts, I18nPostCollection],
+    documentTypes: [Config, Authors, Tags, Posts, I18nPostCollection],
 })

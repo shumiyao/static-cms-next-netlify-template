@@ -5,7 +5,7 @@ import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
 import PostList from '@/components/PostList';
 import config from '@/lib/config';
 import { countPosts, listPostContent } from '@/lib/i18n-posts';
-import { listTags } from '@/lib/tags';
+import { listTagsI18n } from '@/lib/tags';
 
 import type { PostContent } from '@/lib/i18n-posts';
 import type { TagContent } from '@/lib/tags';
@@ -21,7 +21,7 @@ interface PostsProps {
 
 const getPosts = async (locale: string): Promise<PostsProps> => {
   const posts = listPostContent(1, config.posts_per_page, undefined, locale);
-  const tags = listTags();
+  const tags = listTagsI18n();
   const pagination = {
     current: 1,
     pages: Math.ceil(countPosts() / config.posts_per_page),

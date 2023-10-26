@@ -9,6 +9,7 @@ import { listTags } from '@/lib/tags';
 
 import type { PostContent } from '@/lib/i18n-posts';
 import type { TagContent } from '@/lib/tags';
+import { json } from 'stream/consumers';
 
 interface PageProps {
   posts: PostContent[];
@@ -21,7 +22,7 @@ interface PageProps {
 }
 
 const getPage = async (page: number, locale: string): Promise<PageProps> => {
-  const posts = listPostContent(page, config.posts_per_page, locale);
+  const posts = listPostContent(page, config.posts_per_page, undefined, locale);
   const tags = listTags();
   const pagination = {
     current: page,
@@ -52,7 +53,7 @@ const Page = async ({ params }: { params: { locale: string; page: number } }) =>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} />
+      <PostList posts={posts} tags={tags} pagination={pagination} parentpath='i18n-posts' />
     </Layout>
   );
 };

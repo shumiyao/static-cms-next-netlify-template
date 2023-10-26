@@ -2,6 +2,8 @@ import Pagination from './Pagination';
 import PostItem from './PostItem';
 import TagLink from './TagLink';
 
+import { defaultLocale } from '@/lib/i18n/settings';
+
 import type { PostContent } from '@/lib/posts';
 import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
@@ -39,7 +41,7 @@ const PostList: FC<PostListProps> = ({ posts, tags, pagination, parentpath = 'po
       <ul className='hidden md:block'>
         {tags.map((it, i) => (
           <li key={i} className='mb-3'>
-            <TagLink tag={it} />
+            <TagLink tag={it} parentpath={parentpath} />
           </li>
         ))}
       </ul>

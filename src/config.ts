@@ -1,7 +1,7 @@
 import type { Config } from "@staticcms/core";
 
 const config: Config = {
-  backend: { name: "git-gateway", branch: "main" },
+  backend: { name: "git-gateway", branch: "derivative/i18n" },
   media_folder: "public/images",
   public_folder: "/images",
   i18n: {
@@ -73,6 +73,7 @@ const config: Config = {
       label: "Meta",
       delete: false,
       editor: { preview: false },
+      i18n: true,
       files: [
         {
           name: "authors",
@@ -108,7 +109,6 @@ const config: Config = {
           label: "Tags",
           file: "content/meta/tags.yml",
           description: "List of tags",
-          i18n: true,
           fields: [
             {
               name: "tags",

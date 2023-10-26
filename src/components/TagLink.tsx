@@ -1,16 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import type { TagContent } from "@/lib/tags";
-import type { FC } from "react";
+import type { TagContent } from '@/lib/tags';
+import type { FC } from 'react';
 
 export interface TagProps {
   tag: TagContent;
+  parentpath?: string;
 }
 
-const Tag: FC<TagProps> = ({ tag }) => {
+const Tag: FC<TagProps> = ({ tag, parentpath }) => {
   return (
-    <Link href={"/posts/tags/[[...slug]]"} as={`/posts/tags/${tag.slug}`}>
-      {"#" + tag.name}
+    <Link href={`/${parentpath}/tags/[[...slug]]`} as={`/${parentpath}/tags/${tag.slug}`}>
+      {'#' + tag.name}
     </Link>
   );
 };
