@@ -1,7 +1,7 @@
 'use client';
 
-import { getAuthor } from '@/lib/authors';
-import { getTag } from '@/lib/tags';
+import { getAuthor } from '@/app/lib/authors';
+import { getTag } from '@/app/lib/tags';
 import styles from '../../public/styles/content.module.css';
 import Author from './Author';
 import Copyright from './Copyright';

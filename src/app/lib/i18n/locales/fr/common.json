@@ -1,0 +1,13 @@
+{
+    "change-locale": "Changer de langue pour \"{{changeTo}}\"",
+    "error-with-status": "Une erreur {{statusCode}} s'est produite sur le serveur",
+    "error-without-status": "Une erreur s'est produite sur le serveur",
+    "cookie-title": "Nous utilisons des cookies",
+    "cookie-message": "Nous stockons temporairement des données pour améliorer votre expérience de navigation et vous recommander du contenu qui pourrait vous intéresser. En utilisant nos services, vous acceptez cette surveillance.",
+    "cookie-accept": "Accepter",
+    "cookie-reject": "Rejeter",
+    "privacy-policy": "Politique de confidentialité",
+    "404-title": "Page introuvable",
+    "404-message": "Désolé, nous n'avons pas pu trouver la page que vous recherchez. Elle a peut-être existé, mais vous avez maintenant constaté qu'elle n'existe plus.",
+    "404-button-label": "Retourner en haut"
+}

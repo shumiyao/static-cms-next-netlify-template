@@ -1,0 +1,15 @@
+{
+    "change-locale": "ロケールを \"{{changeTo}}\" に変更します",
+    "error-with-status": "サーバーで {{statusCode}} エラーが発生しました",
+    "error-without-status": "サーバー エラーが発生しました",
+    "cookie-title": "このサイトは Cookie を使用しています",
+    "cookie-message": "あなたのブラウジング エクスペリエンスを向上させ、興味のあるコンテンツを推奨するために、データを一時的に保存します。当サイトのサービスを使用することにより、サイト使用規約に同意したものとみなされます。",
+    "cookie-accept": "受け入れる",
+    "cookie-reject": "受け入れません",
+    "privacy-policy": "プライバシーポリシー",
+    "404-title": "ページが見つかりません",
+    "404-message": "申し訳ありませんが、お探しのページが見つかりませんでした。",
+    "404-button-label": "トップに戻る",
+    "Services":"業務紹介",
+    "contct-form-url": "https://forms.gle/NySD6i6BsEgFawuN7"
+}

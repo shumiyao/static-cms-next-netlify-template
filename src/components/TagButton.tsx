@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { TagContent } from "@/lib/tags";
+import type { TagContent } from "@/app/lib/tags";
 import type { FC } from "react";
 
 export interface TagButtonProps {

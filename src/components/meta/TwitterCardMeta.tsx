@@ -1,4 +1,4 @@
-import config from "@/lib/config";
+import config from "@/app/lib/config";
 import Head from "next/head";
 
 import type { FC } from "react";

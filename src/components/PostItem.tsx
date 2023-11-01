@@ -2,7 +2,7 @@ import { parseISO } from 'date-fns';
 import Link from 'next/link';
 import Date from './Date';
 
-import type { PostContent } from '@/lib/posts';
+import type { PostContent } from '@/app/lib/posts';
 import type { FC } from 'react';
 
 export interface PostItemProps {

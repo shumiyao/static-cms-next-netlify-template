@@ -1,6 +1,6 @@
 export const defaultLocale = 'en'
 export const locales: string[] = [defaultLocale, 'fr', 'ja']
-export const defaultNS = 'translation'
+export const defaultNS = 'common'
 export const cookieName = 'i18next'
 export const localeDetection = true
 

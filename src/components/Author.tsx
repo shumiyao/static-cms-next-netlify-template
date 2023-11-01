@@ -1,4 +1,4 @@
-import type { AuthorContent } from "@/lib/authors";
+import type { AuthorContent } from "@/app/lib/authors";
 import type { FC } from "react";
 
 export interface AuthorProps {

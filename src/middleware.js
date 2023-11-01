@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import acceptLanguage from 'accept-language';
-import { defaultLocale, locales, cookieName } from '@/lib/i18n/settings';
+import { defaultLocale, locales, cookieName } from '@/app/lib/i18n/settings';
 
 acceptLanguage.languages(locales);
 
