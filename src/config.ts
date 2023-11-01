@@ -69,8 +69,8 @@ const config: Config = {
       ],
     },
     {
-      name: "meta",
-      label: "Meta",
+      name: "meta-author",
+      label: "Author",
       delete: false,
       editor: { preview: false },
       i18n: true,
@@ -80,6 +80,7 @@ const config: Config = {
           label: "Authors",
           file: "content/meta/authors.yml",
           description: "Author descriptions",
+          i18n: false,
           fields: [
             {
               name: "authors",
@@ -104,11 +105,21 @@ const config: Config = {
             },
           ],
         },
+      ],
+    },
+    {
+      name: "meta-tags",
+      label: "Tags",
+      delete: false,
+      editor: { preview: false },
+      i18n: true,
+      files: [
         {
           name: "tags",
           label: "Tags",
           file: "content/meta/tags.yml",
           description: "List of tags",
+          i18n: true,
           fields: [
             {
               name: "tags",
@@ -122,12 +133,14 @@ const config: Config = {
                   name: "slug",
                   widget: "string",
                   hint: "The part of a URL identifies the tag",
+                  i18n: true,
                 },
                 {
                   label: "Display Name",
                   name: "name",
                   widget: "string",
                   hint: "Tag name for displaying on the site",
+                  i18n: true,
                 },
               ],
             },

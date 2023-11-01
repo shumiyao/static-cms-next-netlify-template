@@ -32,9 +32,9 @@ const CMSPage: FC = () => {
     CMS.registerPreviewTemplate("posts", PostPreview);
 
     CMS.registerAdditionalLink({
-      id: "external-link",
-      title: "External link",
-      data: "https://example.com/",
+      id: "local-site",
+      title: "Local Site",
+      data: "/",
     });
 
     CMS.init({ config });
