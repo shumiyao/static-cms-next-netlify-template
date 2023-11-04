@@ -39,10 +39,12 @@ const Config = defineDocumentType(() => ({
         },
         twitter_account: {
             type: 'string',
+            default: '',
             required: false,
         },
         github_account: {
             type: 'string',
+            default: '',
             required: false,
         },
         posts_per_page: {

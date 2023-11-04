@@ -7,7 +7,7 @@ import type { FC } from 'react';
 
 export interface PostItemProps {
   post: PostContent;
-  parentpath: string;
+  parentpath?: string;
 }
 
 const PostItem: FC<PostItemProps> = ({ post, parentpath = 'posts' }) => {
