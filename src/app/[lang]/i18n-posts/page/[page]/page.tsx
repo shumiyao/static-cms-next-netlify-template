@@ -9,7 +9,6 @@ import { listTags } from '@/app/lib/tags';
 
 import type { PostContent } from '@/app/lib/i18n-posts';
 import type { TagContent } from '@/app/lib/tags';
-import { json } from 'stream/consumers';
 
 interface PageProps {
   posts: PostContent[];

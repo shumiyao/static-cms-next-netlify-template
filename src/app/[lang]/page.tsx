@@ -5,9 +5,10 @@ import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
 import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
 import { useTranslation } from '@/app/lib/i18n';
 
-const IndexPage = async ({ params: { locale } }: { params: { locale: string } }) => {
-  const { t, i18n } = await useTranslation(locale, 'common');
-  console.log(t( 'cookie-title'));
+const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => {
+  const { t, i18n } = await useTranslation(lang, 'common');
+  console.log(t);
+  console.log(t('cookie-message'));
   return (
     <>
       <Layout>

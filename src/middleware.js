@@ -6,7 +6,7 @@ acceptLanguage.languages(locales);
 
 export const config = {
   // matcher: '/:locale*'
-  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)'],
+  matcher: ['/((?!api|_next/static|locales|_next/image|assets|favicon.ico|sw.js).*)'],
 };
 
 export function middleware(req) {

@@ -1,15 +1,39 @@
 import { createInstance } from 'i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { initReactI18next } from 'react-i18next/initReactI18next'
+import ChainedBackend from 'i18next-chained-backend'
+import backend from "i18next-http-backend";
 import { getOptions } from './settings'
-import { json } from 'stream/consumers'
+const HttpBackend = require('i18next-http-backend')
 
-const initI18next = async (locale: string, ns: string) => {
+const initI18next = async (lang: string, ns: string) => {
     const i18nInstance = createInstance()
+    const localeData = await require(`public/locales/${lang}/${ns}.json`)
+    // console.log({ [lang]: { translations: localeData } });
     await i18nInstance
+        .use(ChainedBackend)
         .use(initReactI18next)
-        .use(resourcesToBackend((language: string, namespace: string) => import(`./locales/${language}/${namespace}.json`)))
-        .init(getOptions(locale, ns))
+        .use(backend)
+        .init({
+            ...getOptions(lang, ns),
+            compatibilityJSON: 'v3',
+            react: {
+                useSuspense: false,
+            },
+            lng: lang,
+            load: 'languageOnly',
+            backend: {
+                backends: [
+                    HttpBackend, // if a namespace can't be loaded via normal http-backend loadPath, then the inMemoryLocalBackend will try to return the correct resources
+                    resourcesToBackend({ [lang]: { translations: localeData } }),
+
+                ],
+                backendOptions: [{
+                    loadPath: 'http://localhost:3000/locales/{{lng}}/{{ns}}.json'
+                }]
+            }
+        })
+
     return i18nInstance
 }
 
