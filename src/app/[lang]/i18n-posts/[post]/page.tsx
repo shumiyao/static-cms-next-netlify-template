@@ -1,5 +1,3 @@
-'use client';
-
 import PostLayout from '@/components/PostLayout';
 import { parseISO } from 'date-fns';
 
@@ -17,12 +15,12 @@ interface PostProps {
   source: string;
 }
 
-const getPost = async (slug: string, locale: string): Promise<PostProps> => {
+const getPost = (slug: string, lang: string): PostProps => {
   const slugToPostContent = ((postContents) => {
     let hash: Record<string, PostContent> = {};
     postContents.forEach((it) => it.slug && (hash[it.slug] = it));
     return hash;
-  })(fetchPostContent(locale));
+  })(fetchPostContent(lang));
   const post = slugToPostContent[slug] as PostContent;
   return {
     title: post.title,
@@ -35,10 +33,10 @@ const getPost = async (slug: string, locale: string): Promise<PostProps> => {
   };
 };
 //
-const Post = async ({ params: { locale, post } }: { params: { locale: string; post: string } }) => {
+const Post = ({ params: { lang, post } }: { params: { lang: string; post: string } }) => {
   const slug = post;
 
-  const { title, dateString, tags, author, description, source } = await getPost(slug, locale);
+  const { title, dateString, tags, author, description, source } = getPost(slug, lang);
 
   return <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} />;
 };

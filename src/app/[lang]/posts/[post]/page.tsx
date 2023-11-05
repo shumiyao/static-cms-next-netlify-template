@@ -3,8 +3,6 @@ import { fetchPostContent } from '@/app/lib/posts';
 import { parseISO } from 'date-fns';
 import type { PostContent } from '@/app/lib/posts';
 
-import { headers } from 'next/headers';
-
 interface PostProps {
   title?: string;
   dateString?: string;
@@ -16,7 +14,7 @@ interface PostProps {
   source: string;
 }
 
-const getPost = async (slug: string, locale: string): Promise<PostProps> => {
+const getPost = async (slug: string): Promise<PostProps> => {
   const slugToPostContent = ((postContents) => {
     let hash: Record<string, PostContent> = {};
     postContents.forEach((it) => it.slug && (hash[it.slug] = it));
@@ -39,12 +37,9 @@ export const generateStaticParams = async () => {
 };
 
 const Post = async ({ params }: { params: { post: string } }) => {
-  const headersList = headers();
-  const locale = headersList.get('x-next-locale') as string;
-
   const slug = params.post;
 
-  const { title, dateString, tags, author, description, source } = await getPost(slug, locale);
+  const { title, dateString, tags, author, description, source } = await getPost(slug);
 
   return <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} />;
 };

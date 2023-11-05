@@ -33,8 +33,8 @@ const getPosts = async (locale: string): Promise<PostsProps> => {
   };
 };
 
-const Posts = async ({ params: { locale } }: { params: { locale: string } }) => {
-  const { posts, tags, pagination } = await getPosts(locale);
+const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
+  const { posts, tags, pagination } = await getPosts(lang);
 
   const url = '/posts';
   const title = 'All posts';
