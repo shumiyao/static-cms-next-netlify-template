@@ -40,11 +40,11 @@ const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
   const title = 'All posts';
 
   return (
-    <Layout>
+    <Layout lang={lang}>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} parentpath='i18n-posts' />
+      <PostList posts={posts} tags={tags} pagination={pagination} parentpath='i18n-posts' lang={lang} />
     </Layout>
   );
 };

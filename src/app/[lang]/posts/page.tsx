@@ -1,14 +1,14 @@
-import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
-import PostList from "@/components/PostList";
-import config from "@/app/lib/config";
-import { countPosts, listPostContent } from "@/app/lib/posts";
-import { listTags } from "@/app/lib/tags";
+import Layout from '@/components/Layout';
+import BasicMeta from '@/components/meta/BasicMeta';
+import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
+import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
+import PostList from '@/components/PostList';
+import config from '@/app/lib/config';
+import { countPosts, listPostContent } from '@/app/lib/posts';
+import { listTags } from '@/app/lib/tags';
 
-import type { PostContent } from "@/app/lib/posts";
-import type { TagContent } from "@/app/lib/tags";
+import type { PostContent } from '@/app/lib/posts';
+import type { TagContent } from '@/app/lib/tags';
 
 interface PostsProps {
   posts: PostContent[];
@@ -33,13 +33,13 @@ const getPosts = async (): Promise<PostsProps> => {
   };
 };
 
-const Posts = async () => {
+const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
   const { posts, tags, pagination } = await getPosts();
 
-  const url = "/posts";
-  const title = "All posts";
+  const url = '/posts';
+  const title = 'All posts';
   return (
-    <Layout>
+    <Layout lang={lang}>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />

@@ -1,13 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import type { TagContent } from "@/app/lib/tags";
-import type { FC } from "react";
+import type { TagContent } from '@/app/lib/tags';
+import type { FC } from 'react';
+
+import { defaultLocale } from '@/app/lib/i18n/settings';
 
 export interface TagButtonProps {
   tag: TagContent;
+  parentpath?: string;
+  lang?: string;
 }
 
-const TagButton: FC<TagButtonProps> = ({ tag }) => {
+const TagButton: FC<TagButtonProps> = ({ tag, lang = defaultLocale, parentpath = 'posts' }) => {
   if (!tag) {
     return null;
   }
@@ -15,9 +19,9 @@ const TagButton: FC<TagButtonProps> = ({ tag }) => {
   return (
     <>
       <Link
-        href={"/posts/tags/[[...slug]]"}
-        as={`/posts/tags/${tag.slug}`}
-        className="
+        href={'/${lang}/${parentpath}/tags/[[...slug]]'}
+        as={`/${lang}/${parentpath}/tags/${tag.slug}`}
+        className='
           inline-block
           rounded-[3px]
           bg-[rgba(21_132_125_0.2)]
@@ -27,7 +31,7 @@ const TagButton: FC<TagButtonProps> = ({ tag }) => {
           px-2
           active:bg-[rgba(21_132_125_0.4)]
           hover:bg-[rgba(21_132_125_0.4)]
-        "
+        '
       >
         {tag.name}
       </Link>

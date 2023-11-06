@@ -11,7 +11,7 @@ const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => 
   console.log(t('cookie-message'));
   return (
     <>
-      <Layout>
+      <Layout lang={lang}>
         <BasicMeta url={'/'} />
         <OpenGraphMeta url={'/'} />
         <TwitterCardMeta url={'/'} />

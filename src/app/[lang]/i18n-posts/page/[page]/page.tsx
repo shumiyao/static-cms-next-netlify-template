@@ -20,8 +20,8 @@ interface PageProps {
   };
 }
 
-const getPage = async (page: number, locale: string): Promise<PageProps> => {
-  const posts = listPostContent(page, config.posts_per_page, undefined, locale);
+const getPage = async (page: number, lang: string): Promise<PageProps> => {
+  const posts = listPostContent(page, config.posts_per_page, undefined, lang);
   const tags = listTags();
   const pagination = {
     current: page,
@@ -42,8 +42,8 @@ export const generateStaticParams = async () => {
   }));
 };
 // { params: { locale, page } }: { params: { locale: string; post: string } }
-const Page = async ({ params }: { params: { locale: string; page: number } }) => {
-  const { posts, tags, pagination, page } = await getPage(params.page, params.locale);
+const Page = async ({ params }: { params: { lang: string; page: number } }) => {
+  const { posts, tags, pagination, page } = await getPage(params.page, params.lang);
 
   const url = `/posts/page/${page}`;
   const title = 'All posts';

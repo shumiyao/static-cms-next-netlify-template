@@ -15,6 +15,8 @@ import TwitterCardMeta from './meta/TwitterCardMeta';
 
 import type { FC } from 'react';
 
+import { defaultLocale } from '@/app/lib/i18n/settings';
+
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export interface PostLayoutProps {
@@ -25,17 +27,19 @@ export interface PostLayoutProps {
   author: string;
   description?: string;
   source: string;
+  lang?: string;
+  parentpath?: string;
 }
 
-const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, description = '', source }) => {
+const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, description = '', source, lang = defaultLocale, parentpath = undefined }) => {
   // const keywords = tags.map((it) => getTag(it)?.name).filter(Boolean);
   // const authorName = getAuthor(author)?.name;
   const MDXContent = useMDXComponent(source);
   return (
-    <Layout>
-      <BasicMeta url={`/posts/${slug}`} title={title} description={description} />
-      <TwitterCardMeta url={`/posts/${slug}`} title={title} description={description} />
-      <OpenGraphMeta url={`/posts/${slug}`} title={title} description={description} />
+    <Layout lang={lang}>
+      <BasicMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
+      <TwitterCardMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
+      <OpenGraphMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
       <div className='block max-w-[36rem] w-full my-0 mx-auto py-0 px-6 box-border z-0 md:flex md:flex-col'>
         <article className='flex-[1_0_auto]'>
           <header>
@@ -55,7 +59,7 @@ const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, desc
           <ul className='text-right mt-7 p-0'>
             {tags.map((it, i) => (
               <li key={i} className='inline-block ml-2'>
-                <TagButton tag={getTag(it)} />
+                <TagButton tag={getTag(it)} parentpath={parentpath} lang={lang} />
               </li>
             ))}
           </ul>

@@ -1,20 +1,25 @@
-"use client";
+'use client';
 
-import classNames from "@/util/classNames.util";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import Burger from "./Burger";
+import classNames from '@/util/classNames.util';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import Burger from './Burger';
+import type { FC } from 'react';
 
-import type { FC } from "react";
+import { defaultLocale } from '@/app/lib/i18n/settings';
 
-const Navigation: FC = () => {
+export interface NavigationProps {
+  lang?: string;
+}
+
+const Navigation: FC<NavigationProps> = ({ lang = defaultLocale }) => {
   const pathname = usePathname();
   const [active, setActive] = useState(false);
   return (
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
-      <div className="w-0 md:w-28 md:block">
+      <div className='w-0 md:w-28 md:block'>
         <ul
           className={classNames(
             `
@@ -39,21 +44,21 @@ const Navigation: FC = () => {
               md:block
               md:translate-y-0
             `,
-            active && "opacity-100 translate-y-0"
+            active && 'opacity-100 translate-y-0'
           )}
         >
-          <li className="mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0">
-            <Link className={classNames(pathname === "/" && "text-gray-900 font-bold")} href="/">
+          <li className='mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0'>
+            <Link className={classNames(pathname === '/' && 'text-gray-900 font-bold')} href={`/${lang}/`}>
               about
             </Link>
           </li>
-          <li className="mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0">
-            <Link className={classNames(pathname.startsWith("/posts") && "text-gray-900 font-bold")} href="/posts">
+          <li className='mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0'>
+            <Link className={classNames(pathname.startsWith('/posts') && 'text-gray-900 font-bold')} href={`/${lang}/posts`}>
               blog
             </Link>
           </li>
-          <li className="mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0">
-            <Link className={classNames(pathname.startsWith("/i18n-posts") && "text-gray-900 font-bold")} href="/i18n-posts">
+          <li className='mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0'>
+            <Link className={classNames(pathname.startsWith('/i18n-posts') && 'text-gray-900 font-bold')} href={`/${lang}/i18n-posts`}>
               i18n blog
             </Link>
           </li>
