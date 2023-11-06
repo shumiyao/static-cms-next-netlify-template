@@ -20,8 +20,8 @@ interface PostsProps {
 }
 
 const getPosts = async (locale: string): Promise<PostsProps> => {
-  const posts = listPostContent(1, config.posts_per_page, undefined, locale);
-  const tags = listTagsI18n();
+  const posts = await listPostContent(1, config.posts_per_page, undefined, locale);
+  const tags = await listTagsI18n();
   const pagination = {
     current: 1,
     pages: Math.ceil(countPosts() / config.posts_per_page),
@@ -38,6 +38,7 @@ const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
 
   const url = '/posts';
   const title = 'All posts';
+
   return (
     <Layout>
       <BasicMeta url={url} title={title} />

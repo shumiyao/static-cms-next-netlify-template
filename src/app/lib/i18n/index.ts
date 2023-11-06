@@ -9,7 +9,6 @@ const HttpBackend = require('i18next-http-backend')
 const initI18next = async (lang: string, ns: string) => {
     const i18nInstance = createInstance()
     const localeData = await require(`public/locales/${lang}/${ns}.json`)
-    // console.log({ [lang]: { translations: localeData } });
     await i18nInstance
         .use(ChainedBackend)
         .use(initReactI18next)

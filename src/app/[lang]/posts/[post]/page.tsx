@@ -22,12 +22,12 @@ const getPost = async (slug: string): Promise<PostProps> => {
   })(fetchPostContent());
   const post = slugToPostContent[slug] as PostContent;
   return {
-    title: post.title,
-    dateString: post.date,
-    slug: post.slug,
-    description: '',
-    tags: post.tags,
-    author: post.author,
+    title: post?.title || '',
+    dateString: post?.date || '',
+    slug: post?.slug || '',
+    description: '' || '',
+    tags: post?.tags || [],
+    author: post?.author || '',
     source: post?.body?.code || '',
   };
 };
@@ -40,8 +40,7 @@ const Post = async ({ params }: { params: { post: string } }) => {
   const slug = params.post;
 
   const { title, dateString, tags, author, description, source } = await getPost(slug);
-
-  return <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} />;
+  return <>{source && <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} />}</>;
 };
 
 export default Post;
