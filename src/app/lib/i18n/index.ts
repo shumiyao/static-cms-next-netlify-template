@@ -4,6 +4,8 @@ import { initReactI18next } from 'react-i18next/initReactI18next'
 import ChainedBackend from 'i18next-chained-backend'
 import backend from "i18next-http-backend";
 import { getOptions } from './settings'
+
+
 const HttpBackend = require('i18next-http-backend')
 
 const initI18next = async (lang: string, ns: string) => {
@@ -41,6 +43,7 @@ interface UseTranslationOptions {
 }
 
 export async function useTranslation(locale: string, ns: string, options: UseTranslationOptions = {}) {
+
     const i18nextInstance = await initI18next(locale, ns)
     return {
         t: i18nextInstance.getFixedT(locale, Array.isArray(ns) ? ns[0] : ns, options.keyPrefix || ''),

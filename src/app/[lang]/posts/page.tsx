@@ -43,7 +43,7 @@ const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} />
+      <PostList posts={posts} tags={tags} pagination={pagination} lang={lang} />
     </Layout>
   );
 };

@@ -1,11 +1,11 @@
-import Layout from "@/components/Layout";
-import TagPostList from "@/components/TagPostList";
-import BasicMeta from "@/components/meta/BasicMeta";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
-import config from "@/app/lib/config";
-import { PostContent, countPosts, listPostContent } from "@/app/lib/posts";
-import { TagContent, getTag, listTags } from "@/app/lib/tags";
+import Layout from '@/components/Layout';
+import TagPostList from '@/components/TagPostList';
+import BasicMeta from '@/components/meta/BasicMeta';
+import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
+import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
+import config from '@/app/lib/config';
+import { PostContent, countPosts, listPostContent } from '@/app/lib/posts';
+import { TagContent, getTag, listTags } from '@/app/lib/tags';
 
 interface TagPostsProps {
   posts: PostContent[];
@@ -54,17 +54,17 @@ export const generateStaticParams = async () => {
   });
 };
 
-const TagPosts = async ({ params: { slug } }: { params: { slug: string[] } }) => {
+const TagPosts = async ({ params: { slug, lang } }: { params: { slug: string[]; lang: string } }) => {
   const { tag, page, posts, pagination } = await getTagPosts(slug);
 
-  const url = `/posts/tags/${tag.name}` + (page ? `/${page}` : "");
+  const url = `/posts/tags/${tag.name}` + (page ? `/${page}` : '');
   const title = tag.name;
   return (
     <Layout>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <TagPostList posts={posts} tag={tag} pagination={pagination} />
+      <TagPostList posts={posts} tag={tag} pagination={pagination} lang={lang} />
     </Layout>
   );
 };

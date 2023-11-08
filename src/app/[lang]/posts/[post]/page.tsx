@@ -36,11 +36,11 @@ export const generateStaticParams = async () => {
   return fetchPostContent().map((it) => ({ post: it.slug }));
 };
 
-const Post = async ({ params }: { params: { post: string } }) => {
-  const slug = params.post;
+const Post = async ({ params: { lang, post } }: { params: { lang: string; post: string } }) => {
+  const slug = post;
 
   const { title, dateString, tags, author, description, source } = await getPost(slug);
-  return <>{source && <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} />}</>;
+  return <>{source && <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} lang={lang} />}</>;
 };
 
 export default Post;
