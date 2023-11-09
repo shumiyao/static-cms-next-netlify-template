@@ -12,7 +12,7 @@ import { dir } from 'i18next';
 const RootLayout = ({ params: { lang }, children }: { params: { lang: string }; children: ReactNode }) => {
   return (
     <html lang={lang} dir={dir(lang)}>
-      <Script src='https://identity.netlify.com/v1/netlify-identity-widget.js' async />
+      <Script src='https://identity.netlify.com/v1/netlify-identity-widget.js' />
       <body className={inter.className}>{children}</body>
     </html>
   );

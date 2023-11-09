@@ -14,7 +14,7 @@
     "c": "contentlayer build"
   },
   "dependencies": {
-    "@staticcms/core": "^3.4.0",
+    "@staticcms/core": "^3.4.5",
     "accept-language": "^3.0.18",
     "autoprefixer": "^10.4.16",
     "contentlayer": "^0.3.4",
