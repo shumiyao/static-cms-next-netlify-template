@@ -3,9 +3,9 @@ import TagPostList from '@/components/TagPostList';
 import BasicMeta from '@/components/meta/BasicMeta';
 import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
 import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
-import config from '@/app/lib/config';
-import { PostContent, countPosts, listPostContent } from '@/app/lib/i18n-posts';
-import { TagContent, getTag, listTags } from '@/app/lib/tags';
+import config from '@/lib/config';
+import { PostContent, countPosts, listPostContent } from '@/lib/i18n-posts';
+import { TagContent, getTag, listTags } from '@/lib/tags';
 
 interface TagPostsProps {
   posts: PostContent[];

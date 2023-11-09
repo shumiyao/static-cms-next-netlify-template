@@ -1,4 +1,4 @@
-import config from "@/app/lib/config";
+import config from "@/lib/config";
 import { formatISO } from "date-fns";
 import Head from "next/head";
 import { jsonLdScriptProps } from "react-schemaorg";

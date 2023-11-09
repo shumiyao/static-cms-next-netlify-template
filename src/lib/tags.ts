@@ -2,7 +2,7 @@ import { tag } from 'contentlayer/generated'
 
 import { allI18nPostCollections } from 'contentlayer/generated'
 import type { I18nPostCollection, I18nPost } from 'contentlayer/generated'
-import { defaultLocale, locales } from '@/app/lib/i18n/settings';
+import { defaultLocale, locales } from '@/lib/i18n/settings';
 import { json } from 'stream/consumers';
 
 export interface TagContent {

@@ -1,8 +1,8 @@
 import PostLayout from '@/components/PostLayout';
 import { parseISO } from 'date-fns';
 
-import { fetchPostContent } from '@/app/lib/i18n-posts';
-import type { PostContent } from '@/app/lib/i18n-posts';
+import { fetchPostContent } from '@/lib/i18n-posts';
+import type { PostContent } from '@/lib/i18n-posts';
 
 interface PostProps {
   title?: string;

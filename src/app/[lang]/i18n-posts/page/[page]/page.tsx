@@ -3,12 +3,12 @@ import PostList from '@/components/PostList';
 import BasicMeta from '@/components/meta/BasicMeta';
 import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
 import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
-import config from '@/app/lib/config';
-import { countPosts, listPostContent } from '@/app/lib/i18n-posts';
-import { listTags } from '@/app/lib/tags';
+import config from '@/lib/config';
+import { countPosts, listPostContent } from '@/lib/i18n-posts';
+import { listTags } from '@/lib/tags';
 
-import type { PostContent } from '@/app/lib/i18n-posts';
-import type { TagContent } from '@/app/lib/tags';
+import type { PostContent } from '@/lib/i18n-posts';
+import type { TagContent } from '@/lib/tags';
 
 interface PageProps {
   posts: PostContent[];

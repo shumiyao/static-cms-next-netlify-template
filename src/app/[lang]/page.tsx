@@ -3,7 +3,7 @@ import SocialList from '@/components/SocialList';
 import BasicMeta from '@/components/meta/BasicMeta';
 import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
 import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
-import { useTranslation } from '@/app/lib/i18n';
+import { useTranslation } from '@/lib/i18n';
 
 const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => {
   const { t, i18n } = await useTranslation(lang, 'common');

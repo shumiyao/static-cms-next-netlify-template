@@ -7,7 +7,9 @@ import { useState } from 'react';
 import Burger from './Burger';
 import type { FC } from 'react';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+
+import { defaultLocale } from '@/lib/i18n/settings';
 
 export interface NavigationProps {
   lang?: string;
@@ -61,6 +63,14 @@ const Navigation: FC<NavigationProps> = ({ lang = defaultLocale }) => {
             <Link className={classNames(pathname.startsWith('/i18n-posts') && 'text-gray-900 font-bold')} href={`/${lang}/i18n-posts`}>
               i18n blog
             </Link>
+          </li>
+          <li className='mb-7 text-3xl p-0 pr-6 last:mb-0 md:text-lg md:pr-0'>
+            <Link className={classNames(pathname.startsWith('/i18n-posts') && 'text-gray-900 font-bold')} href={`/${lang}/admin`}>
+              Admin
+            </Link>
+          </li>
+          <li>
+            <LanguageSwitcher lang={lang} />
           </li>
         </ul>
       </div>

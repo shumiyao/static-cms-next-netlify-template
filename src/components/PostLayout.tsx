@@ -1,7 +1,7 @@
 'use client';
 
-import { getAuthor } from '@/app/lib/authors';
-import { getTag } from '@/app/lib/tags';
+import { getAuthor } from '@/lib/authors';
+import { getTag } from '@/lib/tags';
 import styles from '../../public/styles/content.module.css';
 import Author from './Author';
 import Copyright from './Copyright';
@@ -15,7 +15,7 @@ import TwitterCardMeta from './meta/TwitterCardMeta';
 
 import type { FC } from 'react';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import { defaultLocale } from '@/lib/i18n/settings';
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
 

@@ -1,8 +1,8 @@
 import Pagination from './Pagination';
 import PostItem from './PostItem';
 
-import type { PostContent } from '@/app/lib/posts';
-import type { TagContent } from '@/app/lib/tags';
+import type { PostContent } from '@/lib/posts';
+import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
 
 export interface TagPostListProps {

@@ -2,10 +2,10 @@ import Pagination from './Pagination';
 import PostItem from './PostItem';
 import TagLink from './TagLink';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import { defaultLocale } from '@/lib/i18n/settings';
 
-import type { PostContent } from '@/app/lib/posts';
-import type { TagContent } from '@/app/lib/tags';
+import type { PostContent } from '@/lib/posts';
+import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
 
 export interface PostListProps {

@@ -2,9 +2,9 @@ import { parseISO } from 'date-fns';
 import Link from 'next/link';
 import Date from './Date';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import { defaultLocale } from '@/lib/i18n/settings';
 
-import type { PostContent } from '@/app/lib/posts';
+import type { PostContent } from '@/lib/posts';
 import type { FC } from 'react';
 
 export interface PostItemProps {

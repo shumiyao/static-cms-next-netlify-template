@@ -1,4 +1,4 @@
-import { generatePagination } from "@/app/lib/pagination";
+import { generatePagination } from "@/lib/pagination";
 import Link from "next/link";
 
 import type { FC } from "react";

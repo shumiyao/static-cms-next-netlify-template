@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Navigation from './Navigation';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import { defaultLocale } from '@/lib/i18n/settings';
 
 import type { FC } from 'react';
 

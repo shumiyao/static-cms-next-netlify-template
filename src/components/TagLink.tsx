@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import type { TagContent } from '@/app/lib/tags';
+import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
 
-import { defaultLocale } from '@/app/lib/i18n/settings';
+import { defaultLocale } from '@/lib/i18n/settings';
 
 export interface TagProps {
   tag: TagContent;
