@@ -1,10 +1,9 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 
-const Admin = ({ params: { lang } }: { params: { lang: string } }) => {
-  console.log(lang);
+const Admin = () => {
   const CMSPage = useMemo(
     () =>
       dynamic(() => import('@/components/cms/CMSPage'), {

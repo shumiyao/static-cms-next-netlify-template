@@ -16,7 +16,7 @@ export function middleware(req) {
   if (!locale) locale = defaultLocale;
 
   // Redirect if locale in path is not supported
-  if (!locales.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) && !req.nextUrl.pathname.startsWith('/_next') && !req.nextUrl.pathname.startsWith('/admin')) {
+  if (!locales.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) && !req.nextUrl.pathname.startsWith('/_next')) {
     return NextResponse.redirect(new URL(`/${locale}${req.nextUrl.pathname}`, req.url));
   }
 
