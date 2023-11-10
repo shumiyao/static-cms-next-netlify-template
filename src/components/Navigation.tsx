@@ -9,13 +9,13 @@ import type { FC } from 'react';
 
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-import { defaultLocale } from '@/lib/i18n/settings';
+import { fallbackLng } from '@/lib/i18n/settings';
 
 export interface NavigationProps {
   lang?: string;
 }
 
-const Navigation: FC<NavigationProps> = ({ lang = defaultLocale }) => {
+const Navigation: FC<NavigationProps> = ({ lang = fallbackLng }) => {
   const pathname = usePathname();
   const [active, setActive] = useState(false);
   return (

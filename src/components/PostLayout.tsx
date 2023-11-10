@@ -15,7 +15,7 @@ import TwitterCardMeta from './meta/TwitterCardMeta';
 
 import type { FC } from 'react';
 
-import { defaultLocale } from '@/lib/i18n/settings';
+import { fallbackLng } from '@/lib/i18n/settings';
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
@@ -31,7 +31,7 @@ export interface PostLayoutProps {
   parentpath?: string;
 }
 
-const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, description = '', source, lang = defaultLocale, parentpath = undefined }) => {
+const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, description = '', source, lang = fallbackLng, parentpath = undefined }) => {
   // const keywords = tags.map((it) => getTag(it)?.name).filter(Boolean);
   // const authorName = getAuthor(author)?.name;
   const MDXContent = useMDXComponent(source);

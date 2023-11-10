@@ -1,15 +1,14 @@
-export const defaultLocale = 'en'
-export const locales: string[] = [defaultLocale, 'fr', 'ja']
+export const fallbackLng = 'en'
+export const locales: string[] = [fallbackLng, 'fr', 'ja']
 export const defaultNS = 'common'
 export const cookieName = 'i18next'
 export const localeDetection = true
 
-export function getOptions(lng = defaultLocale, ns = defaultNS) {
+export function getOptions(lng = fallbackLng, ns = defaultNS) {
     return {
         // debug: true,
         supportedLngs: locales,
-        defaultLocale,
-        fallbackLng: defaultLocale,
+        fallbackLng,
         lng,
         fallbackNS: defaultNS,
         defaultNS,

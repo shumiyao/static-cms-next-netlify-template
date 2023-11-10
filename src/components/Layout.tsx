@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Navigation from './Navigation';
 
-import { defaultLocale } from '@/lib/i18n/settings';
+import { fallbackLng } from '@/lib/i18n/settings';
 
 import type { FC } from 'react';
 
@@ -11,7 +11,7 @@ export interface LayoutProps {
   parentpath?: string;
 }
 
-const Layout: FC<LayoutProps> = ({ children, lang = defaultLocale, parentpath = 'posts' }) => {
+const Layout: FC<LayoutProps> = ({ children, lang = fallbackLng, parentpath = 'posts' }) => {
   return (
     <div className='block px-0 py-16 box-border h-full md:flex md:flex-[1_0_auto]'>
       <Head>

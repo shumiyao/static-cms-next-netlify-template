@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
 
-import { defaultLocale } from '@/lib/i18n/settings';
+import { fallbackLng } from '@/lib/i18n/settings';
 
 export interface TagButtonProps {
   tag: TagContent;
@@ -11,7 +11,7 @@ export interface TagButtonProps {
   lang?: string;
 }
 
-const TagButton: FC<TagButtonProps> = ({ tag, lang = defaultLocale, parentpath = 'posts' }) => {
+const TagButton: FC<TagButtonProps> = ({ tag, lang = fallbackLng, parentpath = 'posts' }) => {
   if (!tag) {
     return null;
   }

@@ -2,7 +2,7 @@ import Pagination from './Pagination';
 import PostItem from './PostItem';
 import TagLink from './TagLink';
 
-import { defaultLocale } from '@/lib/i18n/settings';
+import { fallbackLng } from '@/lib/i18n/settings';
 
 import type { PostContent } from '@/lib/posts';
 import type { TagContent } from '@/lib/tags';
@@ -19,7 +19,7 @@ export interface PostListProps {
   };
 }
 
-const PostList: FC<PostListProps> = ({ posts, tags, pagination, lang = defaultLocale, parentpath = 'posts' }) => {
+const PostList: FC<PostListProps> = ({ posts, tags, pagination, lang = fallbackLng, parentpath = 'posts' }) => {
   return (
     <div className='flex my-0 mx-auto max-w-[1200px] w-full py-0 px-6'>
       <div className='flex flex-col flex-auto'>

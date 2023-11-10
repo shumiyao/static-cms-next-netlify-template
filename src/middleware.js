@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import acceptLanguage from 'accept-language';
-import { defaultLocale, locales, cookieName } from '@/lib/i18n/settings';
+import { fallbackLng, locales, cookieName } from '@/lib/i18n/settings';
 
 acceptLanguage.languages(locales);
 
@@ -13,7 +13,7 @@ export function middleware(req) {
   let locale;
   // if (req.cookies.has(cookieName)) locale = acceptLanguage.get(req.cookies.get(cookieName).value);
   if (!locale) locale = acceptLanguage.get(req.headers.get('Accept-Language'));
-  if (!locale) locale = defaultLocale;
+  if (!locale) locale = fallbackLng;
 
   // Redirect if locale in path is not supported
   if (!locales.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) && !req.nextUrl.pathname.startsWith('/_next')) {
