@@ -6,9 +6,7 @@ import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
 import { useTranslation } from '@/lib/i18n';
 
 const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => {
-  const { t, i18n } = await useTranslation(lang, 'common');
-  console.log(t);
-  console.log(t('cookie-message'));
+  const { t, i18n } = await useTranslation(lang, 'home');
   return (
     <>
       <Layout lang={lang}>
@@ -21,8 +19,6 @@ const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => 
             <span className='inline-block mt-1 text-gray-400 tracking-wider' dangerouslySetInnerHTML={{ __html: t('@nextjs-static-cms-blog') }}></span>
             <h2 className='text-3xl font-normal md:text-4xl' dangerouslySetInnerHTML={{ __html: t('A blog template with Next.js and Static CMS.') }}></h2>
             <SocialList />
-
-            {t('cookie-message')}
           </div>
         </div>
       </Layout>

@@ -11,7 +11,7 @@ export const config = {
 
 export function middleware(req) {
   let locale;
-  if (req.cookies.has(cookieName)) locale = acceptLanguage.get(req.cookies.get(cookieName).value);
+  // if (req.cookies.has(cookieName)) locale = acceptLanguage.get(req.cookies.get(cookieName).value);
   if (!locale) locale = acceptLanguage.get(req.headers.get('Accept-Language'));
   if (!locale) locale = defaultLocale;
 

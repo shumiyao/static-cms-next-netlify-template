@@ -15,7 +15,7 @@ export default function LaunguageSwitcher({ lang }: { lang: string }) {
   const router = useRouter();
   // todo handle localized path
   function switchLanguage(targetLocale: string) {
-    router.replace(pathname.replace(`/${params.lang}/`, `/${targetLocale}/`));
+    router.replace(pathname.replace(`/${params.lang}`, `/${targetLocale}`));
   }
   return (
     <div>

@@ -4,12 +4,13 @@ export const defaultNS = 'common'
 export const cookieName = 'i18next'
 export const localeDetection = true
 
-export function getOptions(locale = defaultLocale, ns = defaultNS) {
+export function getOptions(lng = defaultLocale, ns = defaultNS) {
     return {
         // debug: true,
         supportedLngs: locales,
         defaultLocale,
-        locale,
+        fallbackLng: defaultLocale,
+        lng,
         fallbackNS: defaultNS,
         defaultNS,
         ns
