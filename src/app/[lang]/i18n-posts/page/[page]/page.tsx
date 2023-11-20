@@ -1,14 +1,22 @@
 import Layout from '@/components/Layout';
 import PostList from '@/components/PostList';
-import BasicMeta from '@/components/meta/BasicMeta';
-import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
-import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
 import config from '@/lib/config';
 import { countPosts, listPostContent } from '@/lib/i18n-posts';
 import { listTags } from '@/lib/tags';
 
 import type { PostContent } from '@/lib/i18n-posts';
 import type { TagContent } from '@/lib/tags';
+
+import { buildMetadata } from '@/lib/metadata';
+import { Metadata } from 'next';
+import { useTranslation } from '@/lib/i18n';
+
+export async function generateMetadata({ params: { lang, page } }: { params: { lang: string; page: string } }): Promise<Metadata> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = await useTranslation(lang, 'blog');
+  // read route params
+  return buildMetadata({ title: t('Page') + ': ' + page }, lang, 'i18n-posts');
+}
 
 interface PageProps {
   posts: PostContent[];
@@ -44,14 +52,8 @@ export const generateStaticParams = async () => {
 // { params: { locale, page } }: { params: { locale: string; post: string } }
 const Page = async ({ params }: { params: { lang: string; page: number } }) => {
   const { posts, tags, pagination, page } = await getPage(params.page, params.lang);
-
-  const url = `/posts/page/${page}`;
-  const title = 'All posts';
   return (
     <Layout>
-      <BasicMeta url={url} title={title} />
-      <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
       <PostList posts={posts} tags={tags} pagination={pagination} parentpath='i18n-posts' />
     </Layout>
   );

@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/app/globals.css';
 import { Ubuntu } from 'next/font/google';
 
 const inter = Ubuntu({ weight: '300', subsets: ['latin'] });

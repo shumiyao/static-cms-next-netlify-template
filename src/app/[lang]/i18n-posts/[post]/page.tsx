@@ -4,15 +4,17 @@ import { parseISO } from 'date-fns';
 import { fetchPostContent } from '@/lib/i18n-posts';
 import type { PostContent } from '@/lib/i18n-posts';
 
-interface PostProps {
-  title?: string;
-  dateString?: string;
-  // date: string;
-  slug?: string;
-  tags?: string[];
-  author?: string;
-  description?: string;
-  source: string;
+import { buildMetadata } from '@/lib/metadata';
+import type { PostProps } from '@/lib/metadata';
+import { Metadata } from 'next';
+
+let postData: PostProps;
+
+export async function generateMetadata({ params: { lang, post } }: { params: { lang: string; post: string } }): Promise<Metadata> {
+  // get from "i18n-posts"
+  postData = await getPost(post, lang);
+  // read route params
+  return buildMetadata(postData, lang, 'i18n-posts');
 }
 
 const getPost = (slug: string, lang: string): PostProps => {
@@ -35,9 +37,7 @@ const getPost = (slug: string, lang: string): PostProps => {
 //
 const Post = ({ params: { lang, post } }: { params: { lang: string; post: string } }) => {
   const slug = post;
-
-  const { title, dateString, tags, author, description, source } = getPost(slug, lang);
-
+  const { title, dateString, tags, author, description, source } = postData;
   return <>{source && <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} parentpath='i18n-posts' lang={lang} />}</>;
 };
 

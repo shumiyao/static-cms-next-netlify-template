@@ -1,3 +1,6 @@
+// i18n with Next.js 13/14 and app directory / App Router (an i18next guide)
+// https://locize.com/blog/next-app-dir-i18n/
+
 import { createInstance } from 'i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { initReactI18next } from 'react-i18next/initReactI18next'

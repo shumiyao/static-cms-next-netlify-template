@@ -1,11 +1,20 @@
 import Layout from '@/components/Layout';
 import TagPostList from '@/components/TagPostList';
-import BasicMeta from '@/components/meta/BasicMeta';
-import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
-import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
+
 import config from '@/lib/config';
 import { PostContent, countPosts, listPostContent } from '@/lib/i18n-posts';
 import { TagContent, getTag, listTags } from '@/lib/tags';
+
+import { buildMetadata } from '@/lib/metadata';
+import { Metadata } from 'next';
+import { useTranslation } from '@/lib/i18n';
+
+export async function generateMetadata({ params: { lang, post, slug } }: { params: { lang: string; post: string; slug: string } }): Promise<Metadata> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = await useTranslation(lang, 'blog');
+  // read route params
+  return buildMetadata({ title: t('Tag') + ': ' + slug }, lang, 'i18n-posts');
+}
 
 interface TagPostsProps {
   posts: PostContent[];
@@ -56,13 +65,8 @@ export const generateStaticParams = async () => {
 
 const TagPosts = async ({ params: { slug, lang } }: { params: { slug: string[]; lang: string } }) => {
   const { tag, page, posts, pagination } = await getTagPosts(slug, lang);
-  const url = `/posts/tags/${tag.name}` + (page ? `/${page}` : '');
-  const title = tag.name;
   return (
     <Layout lang={lang}>
-      <BasicMeta url={url} title={title} />
-      <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
       <TagPostList posts={posts} tag={tag} pagination={pagination} lang={lang} parentpath={'i18n-posts'} />
     </Layout>
   );

@@ -14,6 +14,17 @@ export interface PostContent {
 
 }
 
+export interface PostProps {
+  title?: string;
+  dateString?: string;
+  // date: string;
+  slug?: string;
+  tags?: string[];
+  author?: string;
+  description?: string;
+  source: string;
+}
+
 export interface PostContentByLocales {
   [key: string]: PostContent[];
 }

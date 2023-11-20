@@ -1,7 +1,5 @@
 import Layout from '@/components/Layout';
-import BasicMeta from '@/components/meta/BasicMeta';
-import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
-import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
+
 import PostList from '@/components/PostList';
 import config from '@/lib/config';
 import { countPosts, listPostContent } from '@/lib/posts';
@@ -10,6 +8,10 @@ import { listTags } from '@/lib/tags';
 import type { PostContent } from '@/lib/posts';
 import type { TagContent } from '@/lib/tags';
 
+import { buildMetadata } from '@/lib/metadata';
+import { Metadata } from 'next';
+import { useTranslation } from '@/lib/i18n';
+
 interface PostsProps {
   posts: PostContent[];
   tags: TagContent[];
@@ -17,6 +19,17 @@ interface PostsProps {
     current: number;
     pages: number;
   };
+}
+
+let postData: PostsProps;
+
+export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = await useTranslation(lang, 'blog');
+  // get from "i18n-posts"
+  postData = await getPosts();
+  // read route params
+  return buildMetadata({ title: t('All posts') }, lang, 'i18n-posts/tags');
 }
 
 const getPosts = async (): Promise<PostsProps> => {
@@ -34,15 +47,9 @@ const getPosts = async (): Promise<PostsProps> => {
 };
 
 const Posts = async ({ params: { lang } }: { params: { lang: string } }) => {
-  const { posts, tags, pagination } = await getPosts();
-
-  const url = '/posts';
-  const title = 'All posts';
+  const { posts, tags, pagination } = postData || (await getPosts());
   return (
     <Layout lang={lang}>
-      <BasicMeta url={url} title={title} />
-      <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
       <PostList posts={posts} tags={tags} pagination={pagination} lang={lang} />
     </Layout>
   );

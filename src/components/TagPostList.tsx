@@ -1,6 +1,8 @@
 import Pagination from './Pagination';
 import PostItem from './PostItem';
 
+import { useTranslation } from '@/lib/i18n';
+
 import type { PostContent } from '@/lib/posts';
 import type { TagContent } from '@/lib/tags';
 import type { FC } from 'react';
@@ -9,18 +11,19 @@ export interface TagPostListProps {
   posts: PostContent[];
   tag: TagContent;
   parentpath?: string;
-  lang?: string;
+  lang: string;
   pagination: {
     current: number;
     pages: number;
   };
 }
 
-const TagPostList: FC<TagPostListProps> = ({ posts, tag, pagination, lang, parentpath = 'posts' }) => {
+const TagPostList: FC<TagPostListProps> = async ({ posts, tag, pagination, lang, parentpath = 'posts' }) => {
+  const { t } = await useTranslation(lang, 'tags');
   return (
     <div className='my-0 mx-auto w-full py-0 px-6 flex flex-col'>
       <h1 className='mr-8 p-0 font-thin text-3xl text-gray-400 md:text-4xl'>
-        All posts / <span className='font-bold text-gray-800'>{tag.name}</span>
+        {t('All posts')} / <span className='font-bold text-gray-800'>{tag.name}</span>
       </h1>
       <ul className='m-0 p-0 flex-[1_0_auto]'>
         {posts.map((it, i) => (

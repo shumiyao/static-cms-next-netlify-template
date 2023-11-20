@@ -3,17 +3,22 @@ import { fetchPostContent } from '@/lib/posts';
 import { parseISO } from 'date-fns';
 import type { PostContent } from '@/lib/posts';
 
-interface PostProps {
-  title?: string;
-  dateString?: string;
-  // date: string;
-  slug?: string;
-  tags?: string[];
-  author?: string;
-  description?: string;
-  source: string;
-}
+import { buildMetadata } from '@/lib/metadata';
+import type { PostProps } from '@/lib/metadata';
+import { Metadata } from 'next';
 
+export const generateStaticParams = async () => {
+  return fetchPostContent().map((it) => ({ post: it.slug }));
+};
+
+let postData: PostProps;
+
+export async function generateMetadata({ params: { lang, post } }: { params: { lang: string; post: string } }): Promise<Metadata> {
+  // get from "i18n-posts"
+  postData = await getPost(post);
+  // read route params
+  return buildMetadata(postData, lang, 'posts');
+}
 const getPost = async (slug: string): Promise<PostProps> => {
   const slugToPostContent = ((postContents) => {
     let hash: Record<string, PostContent> = {};
@@ -32,14 +37,10 @@ const getPost = async (slug: string): Promise<PostProps> => {
   };
 };
 
-export const generateStaticParams = async () => {
-  return fetchPostContent().map((it) => ({ post: it.slug }));
-};
-
 const Post = async ({ params: { lang, post } }: { params: { lang: string; post: string } }) => {
   const slug = post;
 
-  const { title, dateString, tags, author, description, source } = await getPost(slug);
+  const { title, dateString, tags, author, description, source } = postData || (await getPost(slug));
   return <>{source && <PostLayout title={title || ''} date={parseISO(dateString || '')} slug={slug} tags={tags || []} author={author || ''} description={description} source={source} lang={lang} />}</>;
 };
 

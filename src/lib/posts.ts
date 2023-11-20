@@ -11,6 +11,17 @@ export interface PostContent {
   readonly body?: MDX;
 }
 
+export interface PostProps {
+  title?: string;
+  dateString?: string;
+  // date: string;
+  slug?: string;
+  tags?: string[];
+  author?: string;
+  description?: string;
+  source: string;
+}
+
 let postCache: PostContent[];
 
 export function fetchPostContent(): PostContent[] {

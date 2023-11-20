@@ -16,7 +16,7 @@ export interface PostItemProps {
 const PostItem: FC<PostItemProps> = ({ post, parentpath = 'posts', lang = fallbackLng }) => {
   return (
     <Link href={`/${lang}/${parentpath}/` + post.slug} className='text-gray-800 inline-block'>
-      <Date date={parseISO(post.date || '')} />
+      <Date date={parseISO(post.date || '')} lang={lang} />
       <h2 className='m-0 font-medium'>{post.title}</h2>
     </Link>
   );

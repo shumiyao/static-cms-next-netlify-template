@@ -5,8 +5,15 @@ import OpenGraphMeta from '@/components/meta/OpenGraphMeta';
 import TwitterCardMeta from '@/components/meta/TwitterCardMeta';
 import { useTranslation } from '@/lib/i18n';
 
+import { Metadata, ResolvingMetadata } from 'next';
+import { buildMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+  return buildMetadata(undefined, lang, '');
+}
+
 const IndexPage = async ({ params: { lang } }: { params: { lang: string } }) => {
-  const { t, i18n } = await useTranslation(lang, 'home');
+  const { t } = await useTranslation(lang, 'home');
   return (
     <>
       <Layout lang={lang}>

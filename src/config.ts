@@ -28,12 +28,14 @@ const config: Config = {
       label: "Config",
       delete: false,
       editor: { preview: false },
+      i18n: true,
       files: [
         {
           name: "general",
           label: "Site Config",
           file: "content/config.json",
           description: "General site settings",
+          i18n: true,
           fields: [
             {
               label: "URL",
@@ -46,6 +48,7 @@ const config: Config = {
               label: "Site description",
               name: "site_description",
               widget: "string",
+              i18n: true,
             },
             {
               label: "Site keywords",
@@ -53,6 +56,7 @@ const config: Config = {
               widget: "list",
               summary: "{{fields.keyword.keyword}}",
               fields: [{ label: "Keyword", name: "keyword", widget: "string" }],
+              i18n: true,
             },
             {
               label: "Twitter account",

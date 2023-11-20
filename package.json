@@ -1,7 +1,6 @@
 {
   "name": "static-cms-next-netlify-template",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "contentlayer build && next build",
@@ -19,6 +18,7 @@
     "autoprefixer": "^10.4.16",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
+    "expo-localization": "^14.5.0",
     "i18next": "^23.6.0",
     "i18next-chained-backend": "^4.5.0",
     "i18next-http-backend": "^2.3.1",
