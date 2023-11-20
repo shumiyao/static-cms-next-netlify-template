@@ -5,9 +5,14 @@ import { useTranslation } from '@/lib/i18n';
 
 import type { PostContent } from '@/lib/posts';
 import type { TagContent } from '@/lib/tags';
-import type { FC } from 'react';
 
-export interface TagPostListProps {
+const TagPostList = async ({
+  posts,
+  tag,
+  pagination,
+  lang,
+  parentpath = 'posts',
+}: {
   posts: PostContent[];
   tag: TagContent;
   parentpath?: string;
@@ -16,9 +21,7 @@ export interface TagPostListProps {
     current: number;
     pages: number;
   };
-}
-
-const TagPostList: FC<TagPostListProps> = async ({ posts, tag, pagination, lang, parentpath = 'posts' }) => {
+}) => {
   const { t } = await useTranslation(lang, 'tags');
   return (
     <div className='my-0 mx-auto w-full py-0 px-6 flex flex-col'>

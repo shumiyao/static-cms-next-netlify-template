@@ -43,7 +43,7 @@ const CMSPage: FC = () => {
     });
 
     CMS.init({ config });
-  }, []);
+  }, [params]);
 
   return (
     <div>

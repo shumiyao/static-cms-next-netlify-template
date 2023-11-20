@@ -28,7 +28,7 @@ interface TagPostsProps {
 
 const getTagPosts = async (queries: string[], lang: string): Promise<TagPostsProps> => {
   const [slug, page] = [queries[0], queries[1]];
-  const posts = await listPostContent(page ? parseInt(page as string) : 1, config.posts_per_page, slug, lang);
+  const posts = await listPostContent(page ? parseInt(page as string) : 1, config.posts_per_page, slug);
   const tag = await getTag(slug);
   const pagination = {
     current: page ? parseInt(page as string) : 1,
@@ -64,7 +64,7 @@ export const generateStaticParams = async () => {
 };
 
 const TagPosts = async ({ params: { slug, lang } }: { params: { slug: string[]; lang: string } }) => {
-  const { tag, page, posts, pagination } = await getTagPosts(slug);
+  const { tag, page, posts, pagination } = await getTagPosts(slug, lang);
 
   const url = `/posts/tags/${tag.name}` + (page ? `/${page}` : '');
   const title = tag.name;
