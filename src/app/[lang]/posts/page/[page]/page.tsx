@@ -57,7 +57,7 @@ const Page = async ({ params }: { params: { lang: string; page: number } }) => {
   const url = `/posts/page/${page}`;
   const title = 'All posts';
   return (
-    <Layout>
+    <Layout lang={params.lang}>
       <PostList posts={posts} tags={tags} pagination={pagination} lang={params.lang} />
     </Layout>
   );

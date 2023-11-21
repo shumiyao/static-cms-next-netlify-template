@@ -9,9 +9,6 @@ import Date from './Date';
 import Layout from './Layout';
 import SocialList from './SocialList';
 import TagButton from './TagButton';
-import BasicMeta from './meta/BasicMeta';
-import OpenGraphMeta from './meta/OpenGraphMeta';
-import TwitterCardMeta from './meta/TwitterCardMeta';
 
 import type { FC } from 'react';
 
@@ -37,9 +34,6 @@ const PostLayout: FC<PostLayoutProps> = ({ title, date, slug, author, tags, desc
   const MDXContent = useMDXComponent(source);
   return (
     <Layout lang={lang}>
-      <BasicMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
-      <TwitterCardMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
-      <OpenGraphMeta url={`/${lang}/posts/${slug}`} title={title} description={description} />
       <div className='block max-w-[36rem] w-full my-0 mx-auto py-0 px-6 box-border z-0 md:flex md:flex-col'>
         <article className='flex-[1_0_auto]'>
           <header>

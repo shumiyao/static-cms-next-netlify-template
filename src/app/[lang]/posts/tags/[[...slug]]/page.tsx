@@ -65,11 +65,8 @@ export const generateStaticParams = async () => {
 
 const TagPosts = async ({ params: { slug, lang } }: { params: { slug: string[]; lang: string } }) => {
   const { tag, page, posts, pagination } = await getTagPosts(slug, lang);
-
-  const url = `/posts/tags/${tag.name}` + (page ? `/${page}` : '');
-  const title = tag.name;
   return (
-    <Layout>
+    <Layout lang={lang}>
       <TagPostList posts={posts} tag={tag} pagination={pagination} lang={lang} />
     </Layout>
   );
